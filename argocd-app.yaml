@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k8s-board-app       # ArgoCD에 뜰 애플리케이션 이름
+  namespace: argocd         # ArgoCD가 설치된 네임스페이스
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Yuno-Jung/cloud-naitive.git  # 선생님 깃허브 주소 (오타 주의!)
+    targetRevision: main    # 바라볼 브랜치
+    path: k8s               # YAML 파일들이 들어있는 폴더 경로
+  destination:
+    server: https://kubernetes.default.svc  # 배포할 클러스터 (자기 자신)
+    namespace: default      # 배포할 네임스페이스
+  syncPolicy:
+    automated:              # 자동 배포 설정
+      prune: true           # 깃허브에서 파일 지우면 파드도 같이 지움
+      selfHeal: true        # 누가 강제로 수정하면 다시 원상복구함
