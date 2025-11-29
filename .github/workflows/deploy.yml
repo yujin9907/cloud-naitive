@@ -3,8 +3,6 @@ name: CI/CD Pipeline
 on:
   push:
     branches: [ "main" ]
-    paths-ignore:
-      - 'k8s/**'  # k8s 폴더(설정파일)만 바뀌었을 때는 빌드 돌지 마라 (무한루프 방지)
 
 jobs:
   build-and-deploy:
