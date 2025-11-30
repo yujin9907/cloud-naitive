@@ -54,10 +54,10 @@ jobs:
           git config --global user.email "actions@github.com"
           
           # k8s/backend.yaml 파일에서 image: 부분을 찾아서 새 태그로 변경
-          sed -i '' "s|image: .*/my-backend:.*|image: yujin9907/my-backend:${{ steps.tag.outputs.IMAGE_TAG }}|g" k8s/backend.yaml
+          sed -i "s|image: .*/my-backend:.*|image: yujin9907/my-backend:${{ steps.tag.outputs.IMAGE_TAG }}|g" k8s/backend.yaml
           
           # k8s/frontend.yaml 파일에서 image: 부분을 찾아서 새 태그로 변경
-          sed -i '' "s|image: .*/my-frontend:.*|image: yujin9907/my-frontend:${{ steps.tag.outputs.IMAGE_TAG }}|g" k8s/frontend.yaml
+          sed -i "s|image: .*/my-frontend:.*|image: yujin9907/my-frontend:${{ steps.tag.outputs.IMAGE_TAG }}|g" k8s/frontend.yaml
           
           # 변경사항 확인 및 커밋
           git add k8s/
