@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: yujin9907/my-backend:sha-85727fe
+        image: yujin9907/my-backend:sha-64819d6
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
